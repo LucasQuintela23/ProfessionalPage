@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags SEO & Open Graph -->
+    <title>Lucas Quintela | QA automation | SDET</title>
+    <meta name="description" content="Portfólio de Lucas Quintela, Software Development Engineer in Test (SDET) focado em Automação de Qualidade e Inteligência Artificial.">
+    <meta name="author" content="Lucas Quintela">
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #000000;
+            --text-muted: #555555;
+            --card-bg: #ffffff;
+            --border-color: #e5e5e5;
+            --border-hover: #000000;
+            --font-sans: 'Inter', sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Tradução e SPA */
+        [lang="en"] { display: none; }
+        body.en-mode [lang="pt"] { display: none; }
+        body.en-mode [lang="en"] { display: inline; }
+
+        .page-content { display: none; }
+        .page-content.active { display: block; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header e Navegação */
+        header.main-nav {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover, nav ul li a.active { color: var(--text-main); }
+        nav ul li a.active { text-decoration: underline; text-underline-offset: 6px; }
+
+        .lang-toggle { display: flex; gap: 8px; align-items: center; font-family: var(--font-display); font-weight: 600; font-size: 0.9rem; }
+        .lang-toggle button { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px 8px; display: flex; align-items: center; gap: 6px; }
+        .lang-toggle button img { width: 18px; border-radius: 2px; opacity: 0.5; }
+        .lang-toggle button:hover img, .lang-toggle button.active img { opacity: 1; }
+        .lang-toggle button.active { color: var(--text-main); text-decoration: underline; text-underline-offset: 4px; }
+
+        /* Hero */
+        .hero { padding: 6rem 0 4rem; border-bottom: 1px solid var(--border-color); margin-bottom: 4rem; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -1px; }
+        .hero .subtitle { font-size: 1.25rem; max-width: 600px; margin-bottom: 2rem; color: var(--text-muted); text-align: left !important; }
+        .contact-links { display: flex; gap: 1.5rem; }
+        .contact-links a { color: var(--text-muted); text-decoration: none; font-size: 1.5rem; transition: color 0.3s ease, transform 0.2s ease; }
+        .contact-links a:hover { color: var(--text-main); transform: translateY(-2px); }
+
+        /* Seções e Cards */
+        section { margin-bottom: 5rem; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--text-main); padding-bottom: 0.5rem; display: inline-block; font-family: var(--font-display); }
+        p, .activity-card p, .education-card p, .exp-card p { color: var(--text-muted); margin-bottom: 1rem; font-size: 1.1rem; text-align: justify; }
+
+        .summary-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2.5rem; }
+        .activities-grid, .education-grid, .exp-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .exp-list { grid-template-columns: 1fr; }
+        .activity-card, .education-card, .exp-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; transition: all 0.2s ease; }
+        .activity-card:hover, .education-card:hover, .exp-card:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: 4px 4px 0px var(--text-main); }
+        .card-icon { font-size: 1.25rem; color: var(--bg-color); margin-bottom: 1.5rem; background: var(--text-main); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+
+        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; }
+        .exp-header div h3 { margin-bottom: 0.25rem; }
+        .exp-header .company { font-weight: 600; color: var(--text-main); }
+        .exp-header .date { font-size: 0.9rem; color: var(--text-muted); font-family: var(--font-display); }
+
+        .exp-card ul { list-style: none; margin-top: 1rem; }
+        .exp-card li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.95rem; text-align: justify; }
+        .exp-card li::before { content: "•"; position: absolute; left: 0; color: var(--text-main); }
+
+        .tech-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+        .tech-list h3 { border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+        .tech-list ul { list-style: none; }
+        .tech-list li { position: relative; padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-muted); text-align: left; }
+        .tech-list li::before { content: "→"; position: absolute; left: 0; color: var(--text-main); font-weight: bold; }
+        .tech-list strong { color: var(--text-main); font-weight: 600; }
+
+        footer { text-align: center; padding: 3rem 0; border-top: 1px solid var(--border-color); color: var(--text-muted); margin-top: 4rem; }
+
+        @media (max-width: 768px) {
+            header.main-nav { flex-direction: column; gap: 1rem; padding: 1.5rem 0; }
+            nav ul { gap: 1rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .activities-grid, .tech-container, .education-grid { grid-template-columns: 1fr; }
+            .exp-header { flex-direction: column; }
+            .exp-header .date { margin-top: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-nav">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <nav>
+                <ul>
+                    <li><a onclick="setPage('home')" id="nav-home" class="active"><span lang="pt">Início</span><span lang="en">Home</span></a></li>
+                    <li><a onclick="setPage('experiencia')" id="nav-experiencia"><span lang="pt">Experiência</span><span lang="en">Experience</span></a></li>
+                    <li><a onclick="setPage('formacao')" id="nav-formacao"><span lang="pt">Formação</span><span lang="en">Education</span></a></li>
+                </ul>
+            </nav>
+            <div class="lang-toggle">
+                <button id="btn-pt" class="active" onclick="setLang('pt')"><img src="https://flagcdn.com/w20/br.png" alt="Brasil"> PT</button>
+                <span>|</span>
+                <button id="btn-en" onclick="setLang('en')"><img src="https://flagcdn.com/w20/us.png" alt="USA"> EN</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- PÁGINA INICIAL -->
+        <div id="page-home" class="page-content active">
+            <div class="hero">
+                <h1>Lucas Quintela</h1>
+                <p class="subtitle">
+                    <span lang="pt">QA automation | <span class="nowrap">Software Development Engineer in Test (SDET).</span></span>
+                    <span lang="en">QA automation | <span class="nowrap">Software Development Engineer in Test (SDET).</span></span>
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:lucas23quintela@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/lucasquintela23" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/lucasquintela23" target="_blank"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+            <section id="resumo">
+                <h2><span lang="pt">1. Resumo Profissional</span><span lang="en">1. Professional Summary</span></h2>
+                <div class="summary-box">
+                    <p>
+                        <span lang="pt">Como especialista em engenharia de qualidade, aplico rigor analítico para converter regras de negócio em arquiteturas de testes automatizados escaláveis. Minha atuação abrange todo o ciclo de desenvolvimento de software (SDLC), englobando desde o planejamento estratégico de testes até a observabilidade em ambientes de produção. Impulsiono a maturidade técnica de esteiras de integração contínua (CI/CD) por meio de cobertura baseada em riscos e automação multicamada englobando UI e APIs.</span>
+                        <span lang="en">As a Quality Engineering specialist, I apply analytical rigor to translate business rules into scalable automated test architectures. My expertise spans the entire Software Development Life Cycle (SDLC), encompassing everything from strategic test planning to production observability. I drive the technical maturity of continuous integration pipelines (CI/CD) through risk-based coverage and multi-layered automation across UI and APIs.</span>
+                    </p>
+                    <p>
+                        <span lang="pt">Atuo ativamente na prevenção de defeitos através da consolidação da cultura shift-left, assegurando rastreabilidade contínua e ciclos ágeis de feedback. Para maximizar a eficiência dessas operações, implemento soluções baseadas em Inteligência Artificial Generativa e LLMs, otimizando fluxos de garantia da qualidade, análise de requisitos e geração dinâmica de massas de dados (data seeding).</span>
+                        <span lang="en">I actively focus on defect prevention by consolidating a shift-left culture, ensuring continuous traceability and agile feedback loops. To maximize the efficiency of these operations, I implement solutions based on Generative Artificial Intelligence and LLMs, optimizing quality assurance workflows, requirements analysis, and dynamic test data generation (data seeding).</span>
+                    </p>
+                </div>
+            </section>
+
+            <section id="atividades">
+                <h2><span lang="pt">2. Descrição das Atividades</span><span lang="en">2. Activities Description</span></h2>
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                        <h3><span lang="pt">Automação & Engenharia</span><span lang="en">Automation & Engineering</span></h3>
+                        <p>
+                            <span lang="pt">Criação de testes E2E (Cypress, Selenium, Playwright), APIs REST e testes de performance com k6. Aplicação de TDD/BDD (Gherkin), elaboração de planos de teste e criação de massa de dados em SQL.</span>
+                            <span lang="en">Creation of E2E tests (Cypress, Selenium, Playwright), REST APIs, and performance testing with k6. Application of TDD/BDD (Gherkin), test plan elaboration, and SQL data seeding.</span>
+                        </p>
+                    </div>
+                    <div class="activity-card">
+                        <div class="card-icon"><i class="fa-solid fa-list-check"></i></div>
+                        <h3><span lang="pt">Agilidade & Negócios</span><span lang="en">Agility & Business</span></h3>
+                        <p>
+                            <span lang="pt">Definição técnica de User Stories e critérios de aceite precisos. Aplicação da metodologia shift-left para participar ativamente do planejamento e mapeamento de projetos, com atuação estratégica em cerimônias Scrum e Kanban.</span>
+                            <span lang="en">Technical definition of User Stories and precise acceptance criteria. Application of shift-left methodology to actively participate in project planning and mapping, with strategic involvement in Scrum and Kanban ceremonies.</span>
+                        </p>
+                    </div>
+                    <div class="activity-card">
+                        <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <h3><span lang="pt">Mentoria & Capacitação</span><span lang="en">Mentorship & Training</span></h3>
+                        <p>
+                            <span lang="pt">Mentoria técnica 1:1 para equipes de Engenharia e QA, focada na evolução da maturidade do ciclo de desenvolvimento (SDLC). Implementação de design patterns de testes, estratégias de automação escaláveis e disseminação de boas práticas de engenharia de software.</span>
+                            <span lang="en">1:1 technical mentoring for Engineering and QA teams, focused on elevating the maturity of the software development life cycle (SDLC). Implementation of test design patterns, scalable automation strategies, and dissemination of software engineering best practices.</span>
+                        </p>
+                    </div>
+                    <div class="activity-card">
+                        <div class="card-icon"><i class="fa-solid fa-sitemap"></i></div>
+                        <h3><span lang="pt">Arquitetura de Software</span><span lang="en">Software Architecture</span></h3>
+                        <p>
+                            <span lang="pt">Conceção e validação de arquiteturas de software (microsserviços, mensageria e eventos), garantindo a testabilidade, escalabilidade e resiliência das aplicações desde o design.</span>
+                            <span lang="en">Design and validation of software architectures (microservices, messaging, and events), ensuring application testability, scalability, and resilience from the design phase.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tecnologias">
+                <h2><span lang="pt">3. Tecnologias Utilizadas</span><span lang="en">3. Technologies Used</span></h2>
+                <div class="tech-container">
+                    <div class="tech-list">
+                        <h3><i class="fa-solid fa-shield-halved"></i> <span lang="pt">Qualidade & Automação</span><span lang="en">Quality & Automation</span></h3>
+                        <ul>
+                            <li><strong lang="pt">Frameworks:</strong><strong lang="en">Frameworks:</strong> Cypress, Selenium, Playwright, k6, Pytest, Bruno/REST.</li>
+                            <li><strong lang="pt">Pipeline:</strong><strong lang="en">Pipeline:</strong> GitHub Actions, GitLab CI, SonarQube, Quality Gates.</li>
+                            <li><strong lang="pt">Observabilidade:</strong><strong lang="en">Observability:</strong> Grafana, Kibana, Prometheus.</li>
+                        </ul>
+                    </div>
+                    <div class="tech-list">
+                        <h3><i class="fa-solid fa-code"></i> <span lang="pt">Desenvolvimento & Dados</span><span lang="en">Development & Data</span></h3>
+                        <ul>
+                            <li><strong lang="pt">Linguagens:</strong><strong lang="en">Languages:</strong> Python, JavaScript.</li>
+                            <li><strong lang="pt">Frameworks:</strong><strong lang="en">Frameworks:</strong> Airflow, Flask, Django, FastAPI.</li>
+                            <li><strong lang="pt">IA:</strong><strong lang="en">AI:</strong> LLMs, Langchain, Faker, Synthetic Data Vault (SDV).</li>
+                            <li><strong lang="pt">Dados:</strong><strong lang="en">Data:</strong> PostgreSQL, SQL, MongoDB.</li>
+                            <li><strong lang="pt">Infraestrutura:</strong><strong lang="en">Infrastructure:</strong> Docker, Linux, AWS Lambda, RabbitMQ.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PÁGINA DE EXPERIÊNCIA -->
+        <div id="page-experiencia" class="page-content">
+            <div class="hero">
+                <h1><span lang="pt">Experiência Profissional</span><span lang="en">Professional Experience</span></h1>
+                <p class="subtitle">
+                    <span lang="pt">Histórico técnico detalhado focado em engenharia de qualidade, automação e desenvolvimento.</span>
+                    <span lang="en">Detailed technical history focused on quality engineering, automation, and development.</span>
+                </p>
+            </div>
+
+            <section>
+                <div class="exp-list">
+                    <!-- Luizalabs -->
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3>Software Development Engineer in Test (SDET)</h3>
+                                <p class="company">Luizalabs</p>
+                            </div>
+                            <span class="date"><span lang="pt">Mar 2025 — Presente</span><span lang="en">Mar 2025 — Present</span></span>
+                        </div>
+                        <ul>
+                            <li><span lang="pt">Garantia da qualidade do software em todas as etapas do ciclo de desenvolvimento (SDLC).</span><span lang="en">Ensuring software quality throughout all stages of the software development life cycle (SDLC).</span></li>
+                            <li><span lang="pt">Escrita de testes utilizando os padrões TDD, BDD e sintaxe Gherkin.</span><span lang="en">Writing tests using TDD, BDD standards, and Gherkin syntax.</span></li>
+                            <li><span lang="pt">Atuação como Suporte N3: identificação, documentação, priorização e correção de bugs críticos.</span><span lang="en">Acting as N3 Support: identifying, documenting, prioritizing, and fixing critical bugs.</span></li>
+                            <li><span lang="pt">Apoio ao Suporte N1 através da revisão técnica de procedimentos operacionais.</span><span lang="en">Supporting N1 Support through technical review of operational procedures.</span></li>
+                            <li><span lang="pt">Criação de automação de testes End-to-End (E2E) com frameworks Cypress e Robot Framework.</span><span lang="en">Creation of End-to-End (E2E) test automation using Cypress and Robot Framework.</span></li>
+                            <li><span lang="pt">Trabalho em equipes ágeis com participação ativa em cerimônias Scrum e Kanban.</span><span lang="en">Work in agile teams with active participation in Scrum and Kanban ceremonies.</span></li>
+                            <li><span lang="pt">Mapeamento de cenários de teste, criação de planos de teste e massa de dados via SQL.</span><span lang="en">Mapping test scenarios, creating test plans, and test data seeding via SQL.</span></li>
+                            <li><span lang="pt">Automação de APIs RESTful e reporte detalhado de problemas para rastreabilidade.</span><span lang="en">Rest API automation and detailed problem reporting for traceability.</span></li>
+                            <li><span lang="pt">Definição de User Stories, critérios de aceite e aprovação técnica.</span><span lang="en">Definition of User Stories, acceptance criteria, and technical approval.</span></li>
+                            <li><span lang="pt">Experiência com arquiteturas de mensageria (RabbitMQ) e serviços AWS Lambda.</span><span lang="en">Experience with messaging architectures (RabbitMQ) and AWS Lambda services.</span></li>
+                            <li><span lang="pt">Utilização estratégica de bancos de dados PostgreSQL e MongoDB.</span><span lang="en">Strategic use of PostgreSQL and MongoDB databases.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- CESAR - Junior QA -->
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3><span lang="pt">Engenheiro de QA Júnior</span><span lang="en">Junior QA Engineer</span></h3>
+                                <p class="company">CESAR</p>
+                            </div>
+                            <span class="date"><span lang="pt">Dez 2024 — Mar 2025</span><span lang="en">Dec 2024 — Mar 2025</span></span>
+                        </div>
+                        <ul>
+                            <li><span lang="pt">Desenvolvimento de casos de teste baseados em requisitos funcionais e não funcionais.</span><span lang="en">Development of test cases based on functional and non-functional requirements.</span></li>
+                            <li><span lang="pt">Execução de testes manuais, de regressão, funcionais e exploratórios para identificação de bugs.</span><span lang="en">Execution of manual, regression, functional, and exploratory tests for bug identification.</span></li>
+                            <li><span lang="pt">Colaboração direta com desenvolvedores em times ágeis para garantir a qualidade das entregas.</span><span lang="en">Direct collaboration with developers in agile teams to ensure delivery quality.</span></li>
+                            <li><span lang="pt">Uso de ferramentas como Mendix, Cypress, Selenium, SQL, Postman e Azure DevOps.</span><span lang="en">Use of tools such as Mendix, Cypress, Selenium, SQL, Postman, and Azure DevOps.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- CESAR - Software Engineer -->
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3><span lang="pt">Engenheiro de Software</span><span lang="en">Software Engineer</span></h3>
+                                <p class="company">CESAR</p>
+                            </div>
+                            <span class="date"><span lang="pt">Fev 2022 — Jan 2025</span><span lang="en">Feb 2022 — Jan 2025</span></span>
+                        </div>
+                        <ul>
+                            <li><span lang="pt">Desenvolvimento e manutenção de aplicações utilizando Python, JavaScript e Mendix.</span><span lang="en">Development and maintenance of applications using Python, JavaScript, and Mendix.</span></li>
+                            <li><span lang="pt">Implementação de funcionalidades baseadas em metodologias ágeis (Scrum/Kanban).</span><span lang="en">Implementation of functionalities based on agile methodologies (Scrum/Kanban).</span></li>
+                            <li><span lang="pt">Integração de APIs e serviços RESTful para comunicação escalável entre sistemas.</span><span lang="en">Integration of APIs and RESTful services for scalable communication between systems.</span></li>
+                            <li><span lang="pt">Colaboração com times de Design e QA para assegurar consistência na experiência do usuário.</span><span lang="en">Collaboration with Design and QA teams to ensure user experience consistency.</span></li>
+                            <li><span lang="pt">Automação de pipelines de CI/CD e controle de versão via Git e GitLab.</span><span lang="en">CI/CD pipeline automation and version control via Git and GitLab.</span></li>
+                            <li><span lang="pt">Uso de frameworks como React e Django para entregas de soluções modernas.</span><span lang="en">Use of frameworks such as React and Django for modern solution delivery.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- PROSID -->
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3><span lang="pt">Analista de QA</span><span lang="en">QA Analyst</span></h3>
+                                <p class="company">PROSID</p>
+                            </div>
+                            <span class="date"><span lang="pt">Abr 2023 — Out 2023</span><span lang="en">Apr 2023 — Oct 2023</span></span>
+                        </div>
+                        <ul>
+                            <li><span lang="pt">Criação e execução de testes manuais e automatizados para validação de fluxos e interfaces.</span><span lang="en">Creation and execution of manual and automated tests for workflow and interface validation.</span></li>
+                            <li><span lang="pt">Reporte técnico de resultados para as equipes de desenvolvimento e gestão de qualidade.</span><span lang="en">Technical reporting of results to development and quality management teams.</span></li>
+                            <li><span lang="pt">Identificação de falhas, inconsistências e bugs com registro detalhado via Trello.</span><span lang="en">Identification of flaws, inconsistencies, and bugs with detailed tracking via Trello.</span></li>
+                            <li><span lang="pt">Criação e manutenção de documentação técnica: scripts, planos e casos de teste.</span><span lang="en">Creation and maintenance of technical documentation: scripts, plans, and test cases.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Prefeitura de Macapá -->
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3><span lang="pt">Diretor de Sistemas de Informação</span><span lang="en">IT Systems Director</span></h3>
+                                <p class="company">Prefeitura de Macapá</p>
+                            </div>
+                            <span class="date"><span lang="pt">Jan 2021 — Jan 2022</span><span lang="en">Jan 2021 — Jan 2022</span></span>
+                        </div>
+                        <ul>
+                            <li><span lang="pt">Gestão da infraestrutura tecnológica: servidores, redes, armazenamento e segurança da informação.</span><span lang="en">Management of technological infrastructure: servers, networks, storage, and information security.</span></li>
+                            <li><span lang="pt">Garantia de alta performance e disponibilidade de dados públicos e serviços governamentais.</span><span lang="en">Ensuring high performance and availability of public data and government services.</span></li>
+                            <li><span lang="pt">Coordenação da implementação de novas tecnologias para aumentar a eficiência digital do governo.</span><span lang="en">Coordination of new technology implementation to increase government digital efficiency.</span></li>
+                            <li><span lang="pt">Desenvolvimento de políticas de proteção de dados e prevenção contra ataques cibernéticos.</span><span lang="en">Development of data protection policies and prevention against cyberattacks.</span></li>
+                            <li><span lang="pt">Estruturação de equipes e definição de responsabilidades para atender demandas da gestão pública.</span><span lang="en">Team structuring and defining responsibilities to meet public management demands.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- PRODAP -->
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3><span lang="pt">Estagiário de Desenvolvimento</span><span lang="en">Development Trainee</span></h3>
+                                <p class="company">PRODAP</p>
+                            </div>
+                            <span class="date"><span lang="pt">Fev 2020 — Jul 2020</span><span lang="en">Feb 2020 — Jul 2020</span></span>
+                        </div>
+                        <ul>
+                            <li><span lang="pt">Auxílio na implementação de funcionalidades e escrita de código em Python e JavaScript.</span><span lang="en">Assisting in feature implementation and writing code in Python and JavaScript.</span></li>
+                            <li><span lang="pt">Identificação e correção de pequenos bugs com validação técnica através de testes.</span><span lang="en">Identifying and fixing minor bugs with technical validation through testing.</span></li>
+                            <li><span lang="pt">Suporte na execução de testes unitários, de integração e funcionais.</span><span lang="en">Support in executing unit, integration, and functional tests.</span></li>
+                            <li><span lang="pt">Criação e atualização de documentação técnica, manuais e especificações.</span><span lang="en">Creation and updating of technical documentation, manuals, and specifications.</span></li>
+                            <li><span lang="pt">Participação em Sprints e reuniões diárias para alinhamento de prazos e atividades.</span><span lang="en">Participation in Sprints and daily meetings for deadline and activity alignment.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Sebrae -->
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3><span lang="pt">Estagiário de TI (Suporte)</span><span lang="en">IT Support Trainee</span></h3>
+                                <p class="company">Sebrae no Amapá</p>
+                            </div>
+                            <span class="date"><span lang="pt">Mai 2018 — Out 2018</span><span lang="en">May 2018 — Oct 2018</span></span>
+                        </div>
+                        <ul>
+                            <li><span lang="pt">Atendimento nível 1 para falhas de hardware, software, rede e acesso a sistemas.</span><span lang="en">Level 1 support for hardware, software, network, and system access failures.</span></li>
+                            <li><span lang="pt">Classificação e priorização de chamados de acordo com a urgência e severidade.</span><span lang="en">Classification and prioritization of tickets according to urgency and severity.</span></li>
+                            <li><span lang="pt">Suporte inicial em conectividade, testes de cabos e configurações de IP.</span><span lang="en">Initial connectivity support, cable testing, and IP configurations.</span></li>
+                            <li><span lang="pt">Escalonamento de problemas complexos para as equipes de nível N2 ou N3.</span><span lang="en">Escalation of complex problems to N2 or N3 teams.</span></li>
+                            <li><span lang="pt">Registro detalhado de ações e resoluções em plataformas de gestão de serviços.</span><span lang="en">Detailed recording of actions and resolutions in service management platforms.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PÁGINA DE FORMAÇÃO -->
+        <div id="page-formacao" class="page-content">
+            <div class="hero">
+                <h1><span lang="pt">Formação Acadêmica</span><span lang="en">Education</span></h1>
+                <p class="subtitle">
+                    <span lang="pt">Minha jornada acadêmica e especializações na área de Engenharia de Software e Qualidade.</span>
+                    <span lang="en">My academic journey and specializations in Software Engineering and Quality.</span>
+                </p>
+            </div>
+            <section>
+                <div class="education-grid">
+                    <div class="education-card"><div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div><h3><span lang="pt">Mestrado em Engenharia de Software</span><span lang="en">Master's in Software Engineering</span></h3><p><strong>UNIPAMPA</strong><br>2025 — 2027</p></div>
+                    <div class="education-card"><div class="card-icon"><i class="fa-solid fa-award"></i></div><h3><span lang="pt">Pós-graduação em Automação de Testes</span><span lang="en">Post-graduate in Test Automation</span></h3><p><strong>Faculdade VINCIT</strong><br>2025</p></div>
+                    <div class="education-card"><div class="card-icon"><i class="fa-solid fa-certificate"></i></div><h3><span lang="pt">Pós-graduação em Testes Ágeis</span><span lang="en">Post-graduate in Agile Testing</span></h3><p><strong>CESAR School</strong><br>2022 — 2024</p></div>
+                    <div class="education-card"><div class="card-icon"><i class="fa-solid fa-university"></i></div><h3><span lang="pt">Bacharelado em Ciência da Computação</span><span lang="en">Bachelor of Computer Science</span></h3><p><strong>Anhanguera Educacional</strong><br>2017 — 2021</p></div>
+                    <div class="education-card"><div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div><h3><span lang="pt">Técnico em Informática</span><span lang="en">IT Technician</span></h3><p><strong>CEPAJOB</strong><br>2016 — 2018</p></div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Lucas Quintela. <span lang="pt">Construído para inovação em Qualidade de Software.</span><span lang="en">Built for innovation in Software Quality.</span></p>
+        </footer>
+    </main>
+
+    <script>
+        function setLang(lang) {
+            if (lang === 'en') { document.body.classList.add('en-mode'); } 
+            else { document.body.classList.remove('en-mode'); }
+            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+
+        function setPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            document.getElementById('nav-' + pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
